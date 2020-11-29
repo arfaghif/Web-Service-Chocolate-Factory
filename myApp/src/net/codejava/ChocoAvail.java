@@ -22,37 +22,13 @@ import org.json.simple.JSONObject;
 public class ChocoAvail {
 	@Resource
 	  private WebServiceContext ws;
-	
-	
-//	Set SQl config
-	private final String userName = "root";
-	private final String password = "";
-	private final String serverName = "localhost";
-	private final int portNumber = 3306;
-	private final String dbName = "factory";
-	
-	//Set connection sql
-	private Connection getConnection() throws Exception {
-		Class.forName("org.mariadb.jdbc.Driver");
-		Connection conn = null;
-		Properties prop = new Properties();
-		prop.put("user","root");
-		prop.put("password","");
-		conn = DriverManager.getConnection("jdbc:mariadb://"
-				+ this.serverName + ":" + this.portNumber + "/" + this.dbName,
-				prop);
-		
-		
 
-		return conn;
-	}
-	
     @WebMethod
     public String getChocoAvail() {
     	try {
     		
     		System.out.println("Java");
-    		Statement stmt = this.getConnection().createStatement();
+    		Statement stmt = SetDB.getConnection().createStatement();
     		System.out.println("Java");
     		String sql = "SELECT * FROM choc_avail";
     		
