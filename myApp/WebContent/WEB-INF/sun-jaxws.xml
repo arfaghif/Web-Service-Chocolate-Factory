@@ -7,5 +7,13 @@
   <endpoint
      name="SaldoWebService"
      implementation="net.codejava.Saldo"
-     url-pattern="/ws/saldo"/>   
+     url-pattern="/ws/saldo"/> 
+    <endpoint
+     name="ChocoAvailWebService"
+     implementation="net.codejava.ChocoAvail"
+     url-pattern="/ws/choco-avail"/> 
+     <endpoint
+     name="ChocoListWebService"
+     implementation="net.codejava.ChocoList"
+     url-pattern="/ws/choco-list"/>   
 </endpoints>
