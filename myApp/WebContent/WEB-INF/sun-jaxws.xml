@@ -16,4 +16,15 @@
      name="ChocoListWebService"
      implementation="net.codejava.ChocoList"
      url-pattern="/ws/choco-list"/>   
+     <endpoint
+     name="AutService"
+     implementation="net.codejava.Autentification"
+     url-pattern="/ws/aut"/> 
+     <endpoint
+     name="RequestChocWebService"
+     implementation="net.codejava.RequestChoc"
+     url-pattern="/ws/req-choc"/>
+     
+     
+       
 </endpoints>
