@@ -1,7 +1,0 @@
-package net.codejava;
-
-public class FirstServlet extends HttpServlet {
-	
-	@Override
-	
-}

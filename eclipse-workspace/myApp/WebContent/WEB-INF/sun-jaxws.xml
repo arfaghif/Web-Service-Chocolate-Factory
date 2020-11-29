@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<endpoints xmlns="http://java.sun.com/xml/ns/jax-ws/ri/runtime" version="2.0">
-  <endpoint name="HelloWebService" implementation="ws.factory.services.Hello" url-pattern="/jax-ws/hello" />
-  <endpoint name="AuthWebService" implementation="ws.factory.services.Auth" url-pattern="/jax-ws/auth" />
-  <endpoint name="CoklatFactoryWebService" implementation="ws.factory.services.CoklatFactory" url-pattern="/jax-ws/factory" />
-  <endpoint name="SaldoAkunWebService" implementation="ws.factory.services.SaldoAkun" url-pattern="/jax-ws/saldoakun" />
-</endpoints>
