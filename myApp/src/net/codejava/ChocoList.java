@@ -24,30 +24,40 @@ public class ChocoList {
 	  private WebServiceContext ws;
 
     @WebMethod
-    public String getChocoAvail() {
+    public String getChocoList() {
     	try {
-    		
-    		System.out.println("Java");
+ 
     		Statement stmt = SetDB.getConnection().createStatement();
     		System.out.println("Java");
-    		String sql = "SELECT * FROM choc_avail";
+    		String sql = "SELECT choc_avail.idcoklat AS idcoklat, choc_avail.nama AS choc, bahan.nama AS bahan, resep.jumlah AS jumlah FROM bahan, resep, choc_avail WHERE bahan.idbahan=resep.idbahan AND choc_avail.idcoklat = resep.idcoklat ORDER BY choc_avail.idcoklat";
     		
     		ResultSet rs = stmt.executeQuery(sql);
     		JSONObject jsonObject = new JSONObject();
     		JSONArray jsonArray = new JSONArray();
-    		
+    		int id = 0;
     		while(rs.next()) {
-    			if(rs.getInt("jumlah")>0) {
-    				JSONObject record = new JSONObject();
-    				record.put("_id", rs.getInt("idcoklat"));
-    				record.put("choco", rs.getString("nama") );
-    				record.put("jumlah", rs.getInt("jumlah"));
-    				jsonArray.add(record);
+    			JSONObject jsonObject2 = new JSONObject();
+    			id = rs.getInt("idcoklat");
+    			jsonObject2.put("_id", id);
+    			jsonObject2.put("choco", rs.getString("choc"));
+    			JSONArray jsonArray2 = new JSONArray();
+    			for (int i=1;i<=3;++i) {		
+    				JSONObject jsonObject3 = new JSONObject();
+    				
+//        			jsonObject3.put("bahan",rs.getString("bahan"));
+//        			jsonObject3.put("jumlah", rs.getInt("jumlah"));
+//        			jsonArray2.add(jsonObject3);
+    				jsonArray2.add(rs.getString("jumlah") +" "+ rs.getString("bahan"));
+        			if(i!=3) {
+        				rs.next();
+        			}
     			}
+    			jsonObject2.put("receipts", jsonArray2);
+    			jsonArray.add(jsonObject2);
+    			
     		}
     		
-    		jsonObject.put("chocs", jsonArray);
-    		
+    		jsonObject.put("list", jsonArray);
     		System.out.println(jsonObject.toJSONString());
     		return jsonObject.toJSONString();
     	}catch(Exception e) {
